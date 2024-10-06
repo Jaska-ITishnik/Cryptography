@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4: Convert X8 and X16 to Y10</title>
+    <link rel="stylesheet" href="{% static 'apps/cryptography.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>Task 4: Convert X8 to Y10</h1>
+    <a href="{% url 'main_page' %}">
+        <button>Main page</button>
+    </a>
+    <p>Enter an octal or hexadecimal number to convert it to decimal.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="octal">Enter octal number:</label>
+        <input type="text" id="octal" name="octal">
+        <button type="submit">Convert</button>
+        <br>
+    </form>
+    {% if result is not None %}
+        <h3>Result: Y10 = {{ result }}</h3>
+    {% else %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="errors" style="color: red; font-weight: bold; text-align: center">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+</div>
+{% include 'cryptography/parts/script.html' %}
+</body>
+</html>

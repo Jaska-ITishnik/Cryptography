@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1: Find b = a mod n</title>
+    <link rel="stylesheet" href="{% static 'apps/cryptography.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>Task 1: Find b = a mod n</h1>
+    <a href="{% url 'main_page' %}">
+        <button>Main page</button>
+    </a>
+    <p>Given n > 0 and a < 0, find the result of b = a mod n.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="a">Enter a:</label>
+        <input type="number" id="a" name="a" required>
+        <label for="n">Enter n:</label>
+        <input type="number" id="n" name="n" required>
+        <button type="submit">Calculate</button>
+    </form>
+    {% if result is not None %}
+        <h3>Result: b = {{ result }}</h3>
+    {% endif %}
+</div>
+{% include 'cryptography/parts/script.html' %}
+</body>
+</html>

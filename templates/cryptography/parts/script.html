@@ -1,0 +1,18 @@
+<script>
+    const form = document.getElementById('convert-form');
+    const spinner = document.getElementById('spinner');
+    const resultSection = document.getElementById('result-section');
+
+    form.addEventListener('submit', function () {
+        // Show the loading spinner
+        spinner.style.display = 'block';
+        // Hide the result section until the result is available
+        resultSection.style.display = 'none';
+    });
+
+    window.addEventListener('load', function () {
+        // Once the page is loaded, hide the spinner and show the result
+        spinner.style.display = 'none';
+        resultSection.style.display = 'block';
+    });
+</script>
